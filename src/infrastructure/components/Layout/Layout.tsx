@@ -9,7 +9,7 @@ type Props = {
   isLoading?: boolean
 }
 
-const Layout: FunctionComponent<Props> = ({children, isLoading }) => {
+const Layout: FunctionComponent<Props> = ({ children, isLoading }) => {
   const { data } = useStore(state => state.user)
 
   return (

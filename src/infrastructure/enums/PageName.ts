@@ -1,7 +1,7 @@
 const enum PageName {
   Home = 'Strona Główna',
   Reservation = 'Rezerwacja',
-  League = 'Liga',
+  League = 'Liga'
 }
 
 export default PageName

@@ -9,4 +9,3 @@ const App: FunctionComponent = () => (
 )
 
 export default App
-

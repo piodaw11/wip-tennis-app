@@ -4,17 +4,17 @@ const MainNavbarItems = [
   {
     url: '/',
     label: PageName.Home,
-    isPublic: true,
+    isPublic: true
   },
   {
     url: '/rezerwacja',
     label: PageName.Reservation,
-    isPublic: true,
+    isPublic: true
   },
   {
     url: '/liga',
     label: PageName.League,
-    isPublic: true,
+    isPublic: true
   }
 ]
 

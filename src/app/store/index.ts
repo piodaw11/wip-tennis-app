@@ -1,5 +1,5 @@
 import create from 'zustand'
-import type { UserData, User} from 'app/store/types'
+import type { User } from 'app/store/types'
 import produce from 'immer'
 
 type State = {

@@ -17,17 +17,16 @@ type Props = {
   userData?: UserData
 }
 
-const MainNavbar: FunctionComponent<Props> = ({ userData }) => {
-  return (
-    <StyledNavbar>
-      <StyledNavBox>
-        <StyledTypography>
-          LOGO
-        </StyledTypography>
-        <StyledNavOptions>
-        {MainNavbarItems.map(({ isPublic, url, label}, index) => (
+const MainNavbar: FunctionComponent<Props> = ({ userData }) => (
+  <StyledNavbar>
+    <StyledNavBox>
+      <StyledTypography>
+        LOGO
+      </StyledTypography>
+      <StyledNavOptions>
+        {MainNavbarItems.map(({ isPublic, url, label }, index) => (
           <Fragment key={label}>
-            {index !== 0 && <Divider orientation={'vertical'} style={{ maxHeight: '50%' }} /> }
+            {index !== 0 && <Divider orientation="vertical" style={{ maxHeight: '50%' }} /> }
             <StyledNavOption>
               <Link to={url}>
                 {isPublic && label}
@@ -35,21 +34,20 @@ const MainNavbar: FunctionComponent<Props> = ({ userData }) => {
             </StyledNavOption>
           </Fragment>
         ))}
-        </StyledNavOptions>
-      </StyledNavBox>
-      <StyledCustomerBox>
-        {userData && userData.username ? (
-          <Avatar sx={{ width: 45, height: 45, backgroundColor: 'pink' }}>
-            PD
-          </Avatar>
-        ):(
+      </StyledNavOptions>
+    </StyledNavBox>
+    <StyledCustomerBox>
+      {userData && userData.username ? (
+        <Avatar sx={{ width: 45, height: 45, backgroundColor: 'pink' }}>
+          PD
+        </Avatar>
+        ) : (
           <Typography>
             Zaloguj
           </Typography>
         )}
-      </StyledCustomerBox>
-    </StyledNavbar>
+    </StyledCustomerBox>
+  </StyledNavbar>
   )
-}
 
 export default MainNavbar
