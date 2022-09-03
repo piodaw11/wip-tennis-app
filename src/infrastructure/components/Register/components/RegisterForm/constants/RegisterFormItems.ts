@@ -1,15 +1,15 @@
 const RegisterFormItems: { label: string, name: string }[] = [
   {
     label: 'Adres email',
-    name: 'email',
+    name: 'email'
   },
   {
     label: 'Hasło',
-    name: 'password',
+    name: 'password'
   },
   {
     label: 'Powtórz hasło',
-    name: 'passwordRepeat',
+    name: 'passwordRepeat'
   }
 ]
 
