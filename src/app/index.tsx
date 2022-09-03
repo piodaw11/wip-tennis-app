@@ -1,8 +1,11 @@
 import { FunctionComponent } from 'react'
 import Router from 'app/common/Router/Router'
+import AppProvider from 'app/common/AppProvider/AppProvider'
 
 const App: FunctionComponent = () => (
-  <Router />
+  <AppProvider>
+    <Router />
+  </AppProvider>
 )
 
 export default App
