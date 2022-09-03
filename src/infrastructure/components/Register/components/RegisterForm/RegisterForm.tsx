@@ -1,17 +1,18 @@
 import { FunctionComponent } from 'react'
-import RegisterFormScheme,
-{ RegisterFormValues }
-  from 'infrastructure/components/Register/components/RegisterForm/RegisterFormScheme'
-import { Controller, useForm } from 'react-hook-form'
+import LoadingButton
+  from '@mui/lab/LoadingButton'
+import { Controller, FieldErrors, FieldErrorsImpl, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { TextField } from '@mui/material'
-import {
+import RegisterFormScheme, { RegisterFormValues } from 'infrastructure/components/Register/components/RegisterForm/RegisterFormScheme'import {
   StyledForm,
   StyledInput,
   StyledLabel,
   StyledTypography
 } from 'infrastructure/components/Register/components/RegisterForm/RegisterForm.styled'
-import LoadingButton from '@mui/lab/LoadingButton'
+import RegisterFormItems from 'infrastructure/components/Register/components/RegisterForm/constants/RegisterFormItems'
+
+type Name =  'email' | 'password' | 'passwordRepeat'
 
 const RegisterForm:FunctionComponent = () => {
   const {
@@ -25,48 +26,29 @@ const RegisterForm:FunctionComponent = () => {
     defaultValues: {
       email: '',
       password: '',
-      password2: ''
+      passwordRepeat: ''
     }
   })
 
-    console.log(errors)
   return (
-    <StyledForm onSubmit={handleSubmit((data) => { console.log(data) })}>
-      <StyledInput>
-        <StyledLabel htmlFor="email">Email</StyledLabel>
-        <Controller
-          name="email"
-          control={control}
-          render={({ field }) => (
-            <TextField {...field} variant="outlined" error={Boolean(errors.email?.type)} />
-            )}
-        />
-        {errors.email && <StyledTypography>{errors.email.message}</StyledTypography>}
-      </StyledInput>
-      <StyledInput>
-        <StyledLabel htmlFor="password">Hasło</StyledLabel>
-        <Controller
-          name="password"
-          control={control}
-          render={({ field }) => (
-            <TextField {...field} variant="outlined" error={Boolean(errors.password?.type)} />
-            )}
-        />
-        {errors.password && <StyledTypography>{errors.password.message}</StyledTypography>}
-      </StyledInput>
-      <StyledInput>
-        <StyledLabel htmlFor="password2">Powtórz hasło</StyledLabel>
-        <Controller
-          name="password2"
-          control={control}
-          render={({ field }) => (
-            <TextField {...field} variant="outlined" error={Boolean(errors.password2?.type)} />
-            )}
-        />
-        {errors.password2 && <StyledTypography>{errors.password2.message}</StyledTypography>}
-      </StyledInput>
-      <LoadingButton type="submit" loading variant="contained">Dalej</LoadingButton>
-    </StyledForm>
+      <StyledForm>
+        <StyledInput>
+          {RegisterFormItems.map(({ label, name }) => (
+            <>
+              <StyledLabel htmlFor={name}>{label}</StyledLabel>
+              <Controller
+                name={name as Name}
+                control={control}
+                render={({ field }) => (
+                <TextField {...field} variant='outlined' error={Boolean(errors[name as Name] ) } />
+              )}
+              />
+              {errors[name as Name] && <StyledTypography>{errors[name as Name]?.message}</StyledTypography>}
+            </>
+          ))}
+        </StyledInput>
+        <LoadingButton type={'submit'} loading variant="contained">Dalej</LoadingButton>
+      </StyledForm>
   )
 }
 

@@ -1,7 +1,8 @@
-import HeaderItems from 'infrastructure/components/Header/constants/HeaderItems'
-
-import { StyledHeader, StyledVideoWrapper, StyledVideo, StyledBg } from 'infrastructure/components/Header/Header.styled'
 import { FunctionComponent } from 'react'
+
+import HeaderItems from 'infrastructure/components/Header/constants/HeaderItems'
+import { StyledHeader, StyledVideoWrapper, StyledVideo, StyledBg } from 'infrastructure/components/Header/Header.styled'
+
 
 const Header:FunctionComponent = () => (
   <StyledHeader>

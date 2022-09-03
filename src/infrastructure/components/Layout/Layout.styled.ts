@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 const StyledLayoutWrapper = styled.div`
   position: relative;
-  //min-height: 100vh;
   width: 100%;
 `
 

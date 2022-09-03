@@ -1,7 +1,8 @@
 import { FunctionComponent, ReactNode } from 'react'
+import { CircularProgress } from '@mui/material'
+
 import MainNavbar from 'infrastructure/components/MainNavbar/MainNavbar'
 import { StyledLayoutChildrenWrapper, StyledLayoutWrapper } from './Layout.styled'
-import { CircularProgress } from '@mui/material'
 import useStore from 'app/store'
 
 type Props = {
