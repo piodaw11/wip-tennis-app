@@ -17,6 +17,7 @@
   },
   "ignorePatterns": [".eslintrc.js"],
   "rules": {
+    "react/react-in-jsx-scope": "off",
     "linebreak-style": "off",
     "semi": "off",
     "@typescript-eslint/semi": "off",
