@@ -1,11 +1,14 @@
 import { FunctionComponent } from 'react'
+import Layout from 'infrastructure/components/Layout/Layout'
+import Header from 'infrastructure/components/Header/Header'
 
 const HomePage: FunctionComponent = () => {
-
   return (
-    <div>
-
-    </div>
+    <>
+      <Layout isLoading={false}>
+      </Layout>
+      <Header />
+    </>
   )
 }
 
