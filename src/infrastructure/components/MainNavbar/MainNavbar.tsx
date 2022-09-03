@@ -1,4 +1,6 @@
 import { FunctionComponent, Fragment } from 'react'
+import { Avatar, Divider, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 import {
   StyledNavbar,
@@ -8,9 +10,7 @@ import {
   StyledNavOptions,
   StyledNavOption
 } from './MainNavbar.styled'
-import { Avatar, Divider, Typography } from '@mui/material'
 import MainNavbarItems from 'infrastructure/components/MainNavbar/constants/MainNavbarItems'
-import { Link } from 'react-router-dom'
 import { UserData } from 'app/store/types'
 
 type Props = {
@@ -27,7 +27,7 @@ const MainNavbar: FunctionComponent<Props> = ({ userData }) => {
         <StyledNavOptions>
         {MainNavbarItems.map(({ isPublic, url, label}, index) => (
           <Fragment key={label}>
-            {index !== 0 && <Divider orientation={'vertical'} style={{ maxHeight: '50%' }} /> }
+            {index !== 0 && <Divider orientation='vertical' style={{ maxHeight: '50%' }} /> }
             <StyledNavOption>
               <Link to={url}>
                 {isPublic && label}

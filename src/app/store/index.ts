@@ -1,6 +1,7 @@
-import create from 'zustand'
 import type { UserData, User} from 'app/store/types'
+
 import produce from 'immer'
+import create from 'zustand'
 
 type State = {
   user: User
