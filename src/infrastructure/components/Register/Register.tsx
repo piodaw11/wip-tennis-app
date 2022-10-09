@@ -1,11 +1,15 @@
 import { FunctionComponent } from 'react'
 
-import RegisterForm from 'infrastructure/components/Register/components/RegisterForm/RegisterForm'
 import Layout from 'infrastructure/components/Layout/Layout'
+import RegisterForm from './components/RegisterForm/RegisterForm'
+import { StyledRegisterImage, StyledWrapper } from 'infrastructure/components/Register/Register.styled'
 
-const Register:FunctionComponent = () => (
+const Register: FunctionComponent = () => (
   <Layout>
-    <RegisterForm />
+    <StyledWrapper>
+      <StyledRegisterImage />
+      <RegisterForm />
+    </StyledWrapper>
   </Layout>
   )
 

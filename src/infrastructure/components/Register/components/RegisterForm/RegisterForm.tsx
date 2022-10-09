@@ -1,55 +1,68 @@
-import { FunctionComponent } from 'react'
-import LoadingButton
-  from '@mui/lab/LoadingButton'
-import { Controller, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { TextField } from '@mui/material'
-import RegisterFormScheme, { RegisterFormValues }
-  from 'infrastructure/components/Register/components/RegisterForm/RegisterFormScheme'
-import {
-  StyledForm,
-  StyledInput,
-  StyledLabel,
-  StyledTypography
-} from 'infrastructure/components/Register/components/RegisterForm/RegisterForm.styled'
-import RegisterFormItems from 'infrastructure/components/Register/components/RegisterForm/constants/RegisterFormItems'
+import { FunctionComponent, useEffect } from 'react'
 
-type Name = 'email' | 'password' | 'passwordRepeat'
+import FirstStep
+  from 'infrastructure/components/Register/components/FirstStep/FirstStep'
+import SecondStep
+  from 'infrastructure/components/Register/components/SecondStep/SecondStep'
+import ThirdStep
+  from 'infrastructure/components/Register/components/ThirdStep/ThirdStep'
+import useStepper from 'infrastructure/components/Register/components/RegisterForm/hooks/useStepper'
+import {
+  StyledFormItemsWrapper,
+  StyledFormWrapper,
+  StyledStepper,
+  StyledStepperFormWrapper,
+  StyledTypography,
+  StyledConnector
+} from './RegisterForm.styled'
+import {
+  StepIcon
+} from 'infrastructure/components/Register/components/RegisterForm/StepIcons/StepIcons'
+import RegisterFormSteps from 'infrastructure/components/Register/components/RegisterForm/constants/RegisterFormSteps'
+import Step from '@mui/material/Step'
+import StepLabel from '@mui/material/StepLabel'
+import * as React from 'react'
 
 const RegisterForm:FunctionComponent = () => {
   const {
-    control,
-    formState: { errors }
-  } = useForm<RegisterFormValues>({
-    resolver: yupResolver(RegisterFormScheme),
-    criteriaMode: 'all',
-    mode: 'onBlur',
-    defaultValues: {
-      email: '',
-      password: '',
-      passwordRepeat: ''
+    stepTitle,
+    setStep,
+    activeStep
+  } = useStepper()
+
+  useEffect(() => {
+    setStep(0)
+  }, [])
+
+  const activeStepForm = () => {
+    switch (activeStep) {
+      case 0:
+        return <FirstStep />
+      case 1:
+        return <SecondStep />
+      case 2:
+        return <ThirdStep />
+      default:
+        return <FirstStep />
     }
-  })
+  }
 
   return (
-    <StyledForm>
-      <StyledInput>
-        {RegisterFormItems.map(({ label, name }) => (
-          <>
-            <StyledLabel htmlFor={name}>{label}</StyledLabel>
-            <Controller
-              name={name as Name}
-              control={control}
-              render={({ field }) => (
-                <TextField {...field} variant="outlined" error={Boolean(errors[name as Name])} />
-              )}
-            />
-            {errors[name as Name] && <StyledTypography>{errors[name as Name]?.message}</StyledTypography>}
-          </>
-          ))}
-      </StyledInput>
-      <LoadingButton type="submit" loading variant="contained">Dalej</LoadingButton>
-    </StyledForm>
+    <StyledStepperFormWrapper>
+      <StyledStepper alternativeLabel activeStep={activeStep} connector={<StyledConnector />}>
+        {RegisterFormSteps.map((label) => (
+          <Step key={label}>
+            <StepLabel StepIconComponent={StepIcon} />
+          </Step>
+        ))}
+      </StyledStepper>
+      <StyledFormWrapper>
+        <StyledFormItemsWrapper>
+          <StyledTypography variant="h4">{stepTitle}</StyledTypography>
+          {activeStepForm()}
+        </StyledFormItemsWrapper>
+      </StyledFormWrapper>
+    </StyledStepperFormWrapper>
   )
 }
 

@@ -6,9 +6,8 @@ import Header from 'infrastructure/components/Header/Header'
 const HomePage: FunctionComponent = () => (
   <>
     <Layout isLoading={false}>
-      Childdren
+      <Header />
     </Layout>
-    <Header />
   </>
-  )
+)
 export default HomePage

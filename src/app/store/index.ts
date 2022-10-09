@@ -1,22 +1,17 @@
-import type { User } from 'app/store/types'
-import produce from 'immer'
-import create from 'zustand'
+import { configureStore } from '@reduxjs/toolkit'
 
-type State = {
-  user: User
-}
+import tennisBoxService from 'app/store/services/tennisBoxService'
+import userSlice from 'infrastructure/components/Layout/store/user/userSlice'
+import registerSlice from 'infrastructure/components/Register/store/registerSlice'
+import reservationSlice from 'infrastructure/components/Reservation/store/reservationSlice'
 
-const useStore = create<State>((set) => ({
-  user: {
-    data: {
-      id: null,
-      roleId: null,
-      username: null
-    },
-    setUserData: (payload) => set(produce(state => {
-      state.user.data = payload
-    }))
+const store = configureStore({
+  reducer: {
+    [tennisBoxService.reducerPath]: tennisBoxService.reducer,
+    [userSlice.name]: userSlice.reducer,
+    [registerSlice.name]: registerSlice.reducer,
+    [reservationSlice.name]: reservationSlice.reducer
   }
-}))
+})
 
-export default useStore
+export default store

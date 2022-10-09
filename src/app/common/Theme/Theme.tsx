@@ -9,9 +9,9 @@ const Theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      light: colors.green.light,
-      main: colors.green.standard,
-      dark: colors.green.dark
+      light: colors.pink.light,
+      main: colors.pink.standard,
+      dark: colors.pink.dark
     },
     secondary: {
       light: colors.orange.light,
