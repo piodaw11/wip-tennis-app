@@ -6,6 +6,7 @@ const StyledLayoutWrapper = styled.div`
 `
 
 const StyledLayoutChildrenWrapper = styled.div<{ navbarHeight: string }>`
+  min-height: 100vh;
   height: calc(100% - ${({ navbarHeight }) => navbarHeight});
   width: 100%;
   display: flex;

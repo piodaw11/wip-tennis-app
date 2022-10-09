@@ -1,29 +1,67 @@
+import { Stepper, Typography, StepConnector, stepConnectorClasses } from '@mui/material'
 import styled from 'styled-components'
 
-const StyledForm = styled.form`
+const StyledStepperFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-top: 100px;
+  width: 40%;
+  height: 100%;
 `
 
-const StyledInput = styled.div`
+const StyledStepper = styled(Stepper)`
+  margin: 150px auto 0;
+  width: 80%;
+`
+
+const StyledFormWrapper = styled.div`
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+`
+
+const StyledFormItemsWrapper = styled.div`
+  padding: 32px;
+  flex: 1;
+  width: 80%;
   display: flex;
   flex-direction: column;
+  gap: 30px;
 `
 
-const StyledLabel = styled.label`
+const StyledTypography = styled(Typography)`
   text-align: center;
 `
 
-const StyledTypography = styled.p`
-  font-size: 10px;
-  color: orangered;
+const StyledConnector = styled(StepConnector)`
+  &.${stepConnectorClasses.alternativeLabel} {
+    top: 23px;
+    left: calc(-50% + 16px);
+    right: calc(50% + 16px);
+  }
+  &.${stepConnectorClasses.active} {
+    & .${stepConnectorClasses.line} {
+      border-color: #784af4;
+    }
+  }
+  &.${stepConnectorClasses.completed} {
+    & .${stepConnectorClasses.line} {
+      border-color: #784af4;
+    }
+  }
+  & .${stepConnectorClasses.line} {
+    border-color: #eaeaf0;
+    border-top-width: 3px;
+    border-radius: 1px;
+  }
 `
 
 export {
-  StyledForm,
-  StyledInput,
-  StyledLabel,
-  StyledTypography
+  StyledStepperFormWrapper,
+  StyledFormWrapper,
+  StyledStepper,
+  StyledFormItemsWrapper,
+  StyledTypography,
+  StyledConnector
 }

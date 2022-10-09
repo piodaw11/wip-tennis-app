@@ -3,7 +3,8 @@ import { CircularProgress } from '@mui/material'
 
 import MainNavbar from 'infrastructure/components/MainNavbar/MainNavbar'
 import { StyledLayoutChildrenWrapper, StyledLayoutWrapper } from './Layout.styled'
-import useStore from 'app/store'
+import { useGetMeQuery } from 'infrastructure/components/Layout/store/user/userApi'
+import Cookies from 'js-cookie'
 
 type Props = {
   children: ReactNode,
@@ -11,12 +12,11 @@ type Props = {
 }
 
 const Layout: FunctionComponent<Props> = ({ children, isLoading }) => {
-  const { data } = useStore(state => state.user)
-
+  const { isError, data } = useGetMeQuery({ authToken: Cookies.get('authToken') })
   return (
     <StyledLayoutWrapper>
-      <MainNavbar userData={data} />
-      <StyledLayoutChildrenWrapper navbarHeight="0">
+      <MainNavbar isError={isError} userData={data} />
+      <StyledLayoutChildrenWrapper navbarHeight="70px">
         {isLoading ? <CircularProgress size={70} /> : children}
       </StyledLayoutChildrenWrapper>
     </StyledLayoutWrapper>

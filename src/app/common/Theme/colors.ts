@@ -21,6 +21,11 @@ const colors = {
     standard: '#e46161',
     dark: darken('#e46161', 0.2)
   },
+  pink: {
+    light: lighten('#f10041', 0.3),
+    standard: '#f10041',
+    dark: darken('#f10041', 0.2)
+  },
   black: {
     light: lighten('#333', 0.3),
     standard: '#333',

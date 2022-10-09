@@ -3,10 +3,22 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import { config } from 'dotenv'
+
+config()
+
+const VITE_API_URL = process.env.VITE_API_URL
 
 export default defineConfig(() => ({
   server: {
-    host: true
+    host: true,
+    proxy: {
+      '/tennis-box': {
+        target: VITE_API_URL,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/tennis-box/, 'api')
+      }
+    }
   },
   build: {
     outDir: 'build',

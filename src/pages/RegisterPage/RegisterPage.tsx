@@ -1,7 +1,12 @@
-import Register from 'infrastructure/components/Register/Register'
+import { FunctionComponent } from 'react'
 
-const RegisterPage = () => (
-  <Register />
+import Register from 'infrastructure/components/Register/Register'
+import Layout from 'infrastructure/components/Layout/Layout'
+
+const RegisterPage: FunctionComponent = () => (
+  <Layout>
+    <Register />
+  </Layout>
   )
 
 export default RegisterPage

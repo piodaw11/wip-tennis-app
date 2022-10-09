@@ -13,17 +13,22 @@ const StyledHeader = styled.header`
 const StyledVideoWrapper = styled.div`
   display: flex;
   height: 140vh;
-  
 `
 
 const StyledVideo = styled.video`
-  filter: grayscale(70%)
+  filter: grayscale(70%);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: .6s;
+  
+  &:hover {
+    filter: grayscale(0%);
+  }
 `
 
 const StyledBg = styled.div`
   position: absolute;
-  height: 100%;
-  width: 100%;
 `
 
 export {
