@@ -1,3 +1,7 @@
+import { Controller } from 'react-hook-form'
+import { Checkbox, FormControlLabel, FormGroup, TextField } from '@mui/material'
+import LoadingButton from '@mui/lab/LoadingButton'
+
 import useLoginForm from 'infrastructure/components/Login/components/LoginForm/hooks/useLoginForm'
 import {
   StyledButtonWrapper, StyledForm,
@@ -6,9 +10,6 @@ import {
   StyledLabel, StyledTypography
 } from './Form.styled'
 import LoginFormItems from 'infrastructure/components/Login/components/LoginForm/constants/LoginFormItems'
-import { Controller } from 'react-hook-form'
-import { Checkbox, FormControlLabel, FormGroup, TextField } from '@mui/material'
-import LoadingButton from '@mui/lab/LoadingButton'
 import { FieldName } from 'infrastructure/components/Login/types/Login'
 
 const Form = () => {
@@ -18,13 +19,14 @@ const Form = () => {
     errors,
     isValid,
     onSubmit,
-    isLoading
+    isLoading,
+    checked
   } = useLoginForm()
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <StyledInput>
-        {LoginFormItems.map(({ label, name }) => (
+        {LoginFormItems.map(({ label, name, type }) => (
           <StyledItemsWrapper key={label}>
             <StyledLabel htmlFor={name}>{label}</StyledLabel>
             <Controller
@@ -35,6 +37,7 @@ const Form = () => {
                   {...field}
                   variant="outlined"
                   placeholder={label}
+                  type={type}
                   error={Boolean(errors[name as FieldName])}
                 />
               )}
@@ -44,7 +47,7 @@ const Form = () => {
         ))}
       </StyledInput>
       <FormGroup>
-        <FormControlLabel control={<Checkbox />} label="Zapamiętaj mnie" />
+        <FormControlLabel control={<Checkbox onChange={checked} />} label="Zapamiętaj mnie" />
       </FormGroup>
       <StyledButtonWrapper>
         <LoadingButton

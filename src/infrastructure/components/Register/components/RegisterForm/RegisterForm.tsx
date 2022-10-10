@@ -22,8 +22,17 @@ import RegisterFormSteps from 'infrastructure/components/Register/components/Reg
 import Step from '@mui/material/Step'
 import StepLabel from '@mui/material/StepLabel'
 import * as React from 'react'
+import Cookies from 'js-cookie'
+
+import useRouter from 'app/hooks/useRouter'
+import { useGetMeQuery } from 'infrastructure/components/Layout/store/user/userApi'
+import CookiesName from 'infrastructure/enums/CookiesName'
+import Routing from 'infrastructure/enums/Routing'
 
 const RegisterForm:FunctionComponent = () => {
+  const { replace } = useRouter()
+  const { data } = useGetMeQuery({ authToken: Cookies.get(CookiesName.AUTH_TOKEN) })
+
   const {
     stepTitle,
     setStep,
@@ -33,6 +42,10 @@ const RegisterForm:FunctionComponent = () => {
   useEffect(() => {
     setStep(0)
   }, [])
+
+  if (data) {
+    replace(Routing.Home)
+  }
 
   const activeStepForm = () => {
     switch (activeStep) {

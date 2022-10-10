@@ -1,14 +1,19 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
+import Cookies from 'js-cookie'
 
 import useLoginUser from 'infrastructure/components/Login/components/LoginForm/hooks/useLoginUser'
 import LoginFormScheme, { LoginFormValues } from 'infrastructure/components/Login/components/LoginForm/LoginFormScheme'
+import CookiesName from 'infrastructure/enums/CookiesName'
 
 const useLoginForm = () => {
   const {
     onSubmit,
-    isLoading
+    isLoading,
+    checked
   } = useLoginUser()
+
+  const username = Cookies.get(CookiesName.USERNAME)
 
   const {
     control,
@@ -19,8 +24,8 @@ const useLoginForm = () => {
     criteriaMode: 'all',
     mode: 'onChange',
     defaultValues: {
-      password: '',
-      username: ''
+      username: username || '',
+      password: ''
     }
   })
 
@@ -30,7 +35,8 @@ const useLoginForm = () => {
     errors,
     isValid,
     onSubmit,
-    isLoading
+    isLoading,
+    checked
   }
 }
 

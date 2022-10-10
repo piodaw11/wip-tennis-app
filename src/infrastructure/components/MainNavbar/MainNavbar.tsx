@@ -1,6 +1,7 @@
 import { FunctionComponent, Fragment } from 'react'
-import { Avatar, Divider, Typography } from '@mui/material'
+import { Divider, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import {
   StyledNavbar,
@@ -13,22 +14,25 @@ import {
 import MainNavbarItems from 'infrastructure/components/MainNavbar/constants/MainNavbarItems'
 import PublicPages from 'infrastructure/components/Layout/constants/PublicPages'
 import useRouter from 'app/hooks/useRouter'
-import Cookies from 'js-cookie'
 import { UserData } from 'app/store/types'
+import CookiesName from 'infrastructure/enums/CookiesName'
+import Routing from 'infrastructure/enums/Routing'
+import AccountMenu from 'infrastructure/components/MainNavbar/AccountMenu/AccoutMenu'
 
 type Props = {
   userData?: UserData
   isError: boolean
+  initials?: string
 }
 
-const MainNavbar: FunctionComponent<Props> = ({ isError, userData }) => {
+const MainNavbar: FunctionComponent<Props> = ({ isError, userData, initials }) => {
   const { pathname, replace } = useRouter()
 
   const isPagePublic = PublicPages.includes(pathname)
 
   if (!isPagePublic && isError) {
-    Cookies.remove('authToken')
-    replace('/logowanie')
+    Cookies.remove(CookiesName.AUTH_TOKEN)
+    replace(Routing.Login)
   }
 
   return (
@@ -52,12 +56,10 @@ const MainNavbar: FunctionComponent<Props> = ({ isError, userData }) => {
       </StyledNavBox>
       <StyledCustomerBox>
         {userData ? (
-          <Avatar sx={{ width: 45, height: 45, backgroundColor: 'pink' }}>
-            PD
-          </Avatar>
+          <AccountMenu initials={initials} />
         ) : (
           <Typography>
-            <Link to="/logowanie">
+            <Link to={Routing.Login}>
               Zaloguj
             </Link>
           </Typography>
