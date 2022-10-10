@@ -1,13 +1,13 @@
-import HomePage from 'pages/HomePage/HomePage'
-import LoginPage from 'pages/LoginPage/LoginPage'
-import RegisterPage from 'pages/RegisterPage/RegisterPage'
-import Reservation from 'pages/Reservation/Reservation'
+import Index from 'pages/HomePage/HomePage'
+import Index from 'pages/logowanie/LoginPage'
+import RegisterPage from 'pages/rejestracja/RegisterPage'
+import Index from 'pages/rezerwacja/Reservation'
 
 const AppRoutes = [
   {
     key: 'HomePage',
     path: '',
-    element: <HomePage />
+    element: <Index />
   },
   {
     key: 'RegisterPage',
@@ -17,12 +17,12 @@ const AppRoutes = [
   {
     key: 'LoginPage',
     path: '/logowanie',
-    element: <LoginPage />
+    element: <Index />
   },
   {
     key: 'ReservationPage',
     path: '/rezerwacja',
-    element: <Reservation />
+    element: <Index />
   }
 ]
 
