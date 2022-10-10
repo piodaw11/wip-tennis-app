@@ -16,3 +16,5 @@ const week = dayjs().isoWeek()
 export {
   week
 }
+
+export default dayjs

@@ -1,9 +1,7 @@
-const ThirdStep = () => {
-  return (
-    <div>
-      Potwierdź
-    </div>
+const ThirdStep = () => (
+  <div>
+    Potwierdź
+  </div>
   )
-}
 
 export default ThirdStep
