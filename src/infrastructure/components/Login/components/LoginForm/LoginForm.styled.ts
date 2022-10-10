@@ -1,41 +1,55 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { Divider, Typography } from '@mui/material'
 
-const StyledForm = styled.form`
+const StyledFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-top: 100px;
+  justify-content: center;
+  width: 40%;
+  height: 100%;
+  padding: 32px 140px;
 `
 
-const StyledInput = styled.div`
+const StyledH1 = styled(Typography)`
+  font-size: 38px!important;
+`
+
+const StyledDividerWrappper = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px 0;
 `
 
-const StyledLabel = styled.label`
-  text-align: center;
+const StyledDivider = styled(Divider)`
+  width: 47%;
 `
 
-const StyledTypography = styled.p`
-  font-size: 10px;
-  color: orangered;
+const StyledDividerText = styled(Typography)`
+  font-size: 14px!important;
+  color: rgba(0, 0, 0, 0.5);
 `
 
-const StyledRegisterWrapper = styled.div``
+const StyledRegisterWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+`
 
 const StyledRegisterText = styled.p``
 
 const StyledRegisterLink = styled(Link)`
-  
+  color: dodgerblue;
 `
 
 export {
-  StyledForm,
-  StyledInput,
-  StyledLabel,
-  StyledTypography,
   StyledRegisterWrapper,
   StyledRegisterText,
-  StyledRegisterLink
+  StyledRegisterLink,
+  StyledFormWrapper,
+  StyledH1,
+  StyledDividerWrappper,
+  StyledDivider,
+  StyledDividerText
 }

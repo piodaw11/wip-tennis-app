@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 import { Controller } from 'react-hook-form'
-import { TextField, Typography } from '@mui/material'
+import { TextField } from '@mui/material'
 
 import {
   StyledButtonWrapper,
@@ -20,11 +20,9 @@ import RegisterFormItemsFirstStep
 import StepperButton
   from 'infrastructure/components/Register/components/StepperButton/StepperButton'
 import useFirstStepManager from 'infrastructure/components/Register/components/FirstStep/hooks/useFirstStepManager'
-
-type Name = 'email' | 'phoneNumber'
+import { Email } from 'infrastructure/components/Register/types/Register'
 
 const FirstStep: FunctionComponent = () => {
-
   const {
     control,
     handleSubmit,
@@ -44,7 +42,7 @@ const FirstStep: FunctionComponent = () => {
           <StyledInputWrapper key={label}>
             <StyledLabel htmlFor={name}>{label}</StyledLabel>
             <Controller
-              name={name as Name}
+              name={name as Email}
               control={control}
               render={({ field }) => (
                 <TextField
@@ -52,11 +50,11 @@ const FirstStep: FunctionComponent = () => {
                   variant="outlined"
                   type={type}
                   placeholder={label}
-                  error={Boolean(errors[name as Name])}
+                  error={Boolean(errors[name as Email])}
                 />
               )}
             />
-            {errors[name as Name] && <StyledTypography>{errors[name as Name]?.message}</StyledTypography>}
+            {errors[name as Email] && <StyledTypography>{errors[name as Email]?.message}</StyledTypography>}
           </StyledInputWrapper>
         ))}
       </StyledInput>

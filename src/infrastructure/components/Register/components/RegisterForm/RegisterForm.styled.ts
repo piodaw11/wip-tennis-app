@@ -9,12 +9,12 @@ const StyledStepperFormWrapper = styled.div`
 `
 
 const StyledStepper = styled(Stepper)`
-  margin: 150px auto 0;
+  margin: 120px auto 0;
   width: 80%;
 `
 
 const StyledFormWrapper = styled.div`
-  margin-top: 50px;
+  margin-top: 40px;
   width: 100%;
   display: flex;
   align-items: center;
