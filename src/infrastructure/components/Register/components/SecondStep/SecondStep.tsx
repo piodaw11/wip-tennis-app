@@ -17,8 +17,7 @@ import useRegisterFormSecondStep
 import StepperButton
   from 'infrastructure/components/Register/components/StepperButton/StepperButton'
 import useStepper from 'infrastructure/components/Register/components/RegisterForm/hooks/useStepper'
-
-type FieldName = 'firstName' | 'lastName' | 'password' | 'passwordRepeat'
+import { FieldName } from 'infrastructure/components/Register/types/Register'
 
 const SecondStep:FunctionComponent = () => {
   const {
