@@ -1,5 +1,5 @@
 import ReservationView from 'infrastructure/components/Reservation/ReservationView'
 
-const Reservation = () => <ReservationView />
+const ReservationPage = () => <ReservationView />
 
-export default Reservation
+export default ReservationPage
