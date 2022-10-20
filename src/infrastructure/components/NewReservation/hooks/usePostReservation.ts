@@ -1,4 +1,4 @@
-import { usePostReservationMutation } from 'infrastructure/components/Reservation/store/reservationApi'
+import { usePostReservationMutation } from 'infrastructure/components/NewReservation/store/reservationApi'
 import useAppSelector from 'app/hooks/useAppSelector'
 import { toast } from 'react-toastify'
 
@@ -7,11 +7,11 @@ const usePostReservation = () => {
 
   const { selectedHours, courtId } = useAppSelector(state => state.reservation)
 
-  const createReservationHandler = (date: string) => {
+  const createReservationHandler = () => {
     if (selectedHours && courtId) {
       postReservation({
-        start: `${date} ${selectedHours.start}`,
-        end: `${date} ${selectedHours.end}`,
+        start: selectedHours.start,
+        end: selectedHours.end,
         courtId,
         bookerId: 2,
         isPaid: true
@@ -20,8 +20,8 @@ const usePostReservation = () => {
         .then((result) => {
           toast.success(`Pomyślnie zarezerwowano, id rezerwacji to: ${result.id}`)
         })
-        .catch(err => {
-          toast.error(err)
+        .catch((err) => {
+          toast.error(err.data.message)
         })
     }
   }

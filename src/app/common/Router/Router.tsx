@@ -9,7 +9,6 @@ type RoutesType = {
 
 const Router: FunctionComponent = () => {
   const ROUTES: RoutesType = import.meta.globEager('/src/pages/**/[a-z[]*.tsx')
-  console.log(ROUTES)
   const routes = Object.keys(ROUTES).map((route) => {
     const path = route
       .replace(/\/src\/pages|index|\.tsx$/g, '')

@@ -36,7 +36,7 @@ const StyledDateBoxWrapper = styled.div`
   flex-direction: column;
 `
 
-const StyledDateBox = styled.button`
+const StyledDateBox = styled.button<{ $today: boolean }>`
   height: 100px;
   width: 100%;
   display: flex;
@@ -46,10 +46,15 @@ const StyledDateBox = styled.button`
   border: 1px solid  lightgray;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  position: relative;
   
   &:hover {
     background-color: pink;
   }
+  
+  ${({ $today }) => $today && `
+    background-color: pink;
+  `}
 `
 
 export {

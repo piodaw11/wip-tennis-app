@@ -1,5 +1,5 @@
-import { useGetReservationMutation } from 'infrastructure/components/Reservation/store/reservationApi'
-import { setReservation } from 'infrastructure/components/Reservation/store/reservationSlice'
+import { useGetReservationMutation } from 'infrastructure/components/NewReservation/store/reservationApi'
+import { setReservation } from 'infrastructure/components/NewReservation/store/reservationSlice'
 import useAppDispatch from 'app/hooks/useAppDispatch'
 
 const useGetReservation = () => {
