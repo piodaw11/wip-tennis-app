@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import tennisBoxService from 'app/store/services/tennisBoxService'
 import userSlice from 'infrastructure/components/Layout/store/user/userSlice'
 import registerSlice from 'infrastructure/components/Register/store/registerSlice'
-import reservationSlice from 'infrastructure/components/Reservation/store/reservationSlice'
+import reservationSlice from 'infrastructure/components/NewReservation/store/reservationSlice'
 
 const store = configureStore({
   reducer: {

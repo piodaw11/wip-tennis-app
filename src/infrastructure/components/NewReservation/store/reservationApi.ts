@@ -1,5 +1,5 @@
 import tennisBoxService from 'app/store/services/tennisBoxService'
-import { PostReservation, Reservation } from 'infrastructure/components/Reservation/store/types/Reservation'
+import { PostReservation, Reservation } from 'infrastructure/components/NewReservation/store/types/Reservation'
 import RoutingApi from 'infrastructure/enums/RoutingApi'
 
 const reservationApi = tennisBoxService.injectEndpoints({

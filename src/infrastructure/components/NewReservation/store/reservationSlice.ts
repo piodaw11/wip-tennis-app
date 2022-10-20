@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import reservationApi from 'infrastructure/components/Reservation/store/reservationApi'
+import dayjs from 'dayjs'
+
+import reservationApi from 'infrastructure/components/NewReservation/store/reservationApi'
 
 type State = {
   date: string | null
@@ -32,7 +34,7 @@ const initialState: State = {
   selectedHours: null,
   courtId: null,
   reservation: null,
-  clickedDate: null
+  clickedDate: dayjs().format('YYYY-MM-DD')
 }
 
 const reservationSlice = createSlice({

@@ -2,7 +2,7 @@ import dayjs from 'infrastructure/utils/day'
 
 const dateMapper = () => {
   const days = []
-  const SITE_DAYS_COUNT = 30
+  const SITE_DAYS_COUNT = 14
 
   const today = dayjs()
 
