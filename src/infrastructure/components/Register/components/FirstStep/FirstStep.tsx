@@ -21,6 +21,7 @@ import StepperButton
   from 'infrastructure/components/Register/components/StepperButton/StepperButton'
 import useFirstStepManager from 'infrastructure/components/Register/components/FirstStep/hooks/useFirstStepManager'
 import { Email } from 'infrastructure/components/Register/types/Register'
+import Routing from 'infrastructure/enums/Routing'
 
 const FirstStep: FunctionComponent = () => {
   const {
@@ -63,7 +64,7 @@ const FirstStep: FunctionComponent = () => {
       </StyledButtonWrapper>
       <StyledLoginLinkWrapper>
         <StyledRegisterText>Masz już konto?</StyledRegisterText>
-        <StyledRegisterLink to="/logowanie"> Zaloguj się</StyledRegisterLink>
+        <StyledRegisterLink to={Routing.Login}> Zaloguj się</StyledRegisterLink>
       </StyledLoginLinkWrapper>
     </StyledForm>
   )

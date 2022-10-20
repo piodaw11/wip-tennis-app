@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
 
 import StepTitles from 'infrastructure/components/Register/components/RegisterForm/constants/StepTitles'
 import useAppSelector from 'app/hooks/useAppSelector'
 import useAppDispatch from 'app/hooks/useAppDispatch'
 import { setFormStep } from 'infrastructure/components/Register/store/registerSlice'
+import useRouter from 'app/hooks/useRouter'
+import Routing from 'infrastructure/enums/Routing'
 
 const useStepper = () => {
-  const [stepTitle, setStepTitle] = useState(StepTitles.first)
-  const { formStep } = useAppSelector(state => state.register)
   const dispatch = useAppDispatch()
 
-  const navigate = useNavigate()
+  const [stepTitle, setStepTitle] = useState(StepTitles.first)
+  const { formStep } = useAppSelector(state => state.register)
+
+  const { replace } = useRouter()
 
   const handleRedirect = () => {
-    navigate('/logowanie')
+    replace(Routing.Login)
   }
 
   const handleEmailAndPasswordValidationNext = () => {

@@ -1,7 +1,9 @@
 const enum Routing {
   Home = '/',
   Reservation = '/rezerwacja',
-  League = '/liga'
+  League = '/liga',
+  Login = '/logowanie',
+  Register = '/rejestracja'
 }
 
 export default Routing

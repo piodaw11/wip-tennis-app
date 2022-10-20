@@ -1,11 +1,13 @@
-const LoginFormItems: { label: string, name: string }[] = [
+const LoginFormItems = [
   {
     label: 'Adres email',
-    name: 'username'
+    name: 'username',
+    type: 'text'
   },
   {
     label: 'Hasło',
-    name: 'password'
+    name: 'password',
+    type: 'password'
   }
 ]
 
