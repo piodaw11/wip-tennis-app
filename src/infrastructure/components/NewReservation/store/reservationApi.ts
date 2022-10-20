@@ -4,7 +4,7 @@ import RoutingApi from 'infrastructure/enums/RoutingApi'
 
 const reservationApi = tennisBoxService.injectEndpoints({
   endpoints: (builder) => ({
-    getReservation: builder.mutation<Reservation, Reservation>({
+    getReservation: builder.query<Reservation, Reservation>({
       query: ({ date, filters }) => ({
         url: RoutingApi.Reservation,
         params: {
@@ -30,7 +30,7 @@ const reservationApi = tennisBoxService.injectEndpoints({
 })
 
 export const {
-  useGetReservationMutation,
+  useLazyGetReservationQuery,
   usePostReservationMutation
 } = reservationApi
 
