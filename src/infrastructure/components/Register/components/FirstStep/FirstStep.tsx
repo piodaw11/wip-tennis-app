@@ -38,6 +38,7 @@ const FirstStep: FunctionComponent = () => {
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <StyledInput>
         {/* @todo poprawic typowanie */}
+        {/* @ts-ignore */}
         <StyledErrorMessage>{error?.data?.message}</StyledErrorMessage>
         {RegisterFormItemsFirstStep.map(({ label, name, type }) => (
           <StyledInputWrapper key={label}>
