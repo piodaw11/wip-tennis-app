@@ -1,8 +1,11 @@
 import { FunctionComponent } from 'react'
-
 import { Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Tooltip } from '@mui/material'
 import { Settings, Logout } from '@mui/icons-material'
+
 import useAccountMenu from 'infrastructure/components/MainNavbar/hooks/useAccountMenu'
+import Routing from 'infrastructure/enums/Routing'
+import { StyledLink } from './AccountMenu.styled'
+import useSideMenu from 'infrastructure/components/MyAccount/components/SideMenu/hooks/useSideMenu'
 
 type Props = {
 initials?: string
@@ -15,6 +18,14 @@ const AccountMenu: FunctionComponent<Props> = ({ initials }) => {
     handleOpenAccountMenu,
     handleLogout
   } = useAccountMenu()
+
+  const {
+    selectedSideMenuItem
+  } = useSideMenu()
+
+  const handleRedirect = (id: number) => {
+    selectedSideMenuItem(id)
+  }
 
   return (
     <>
@@ -68,17 +79,23 @@ const AccountMenu: FunctionComponent<Props> = ({ initials }) => {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-          <Avatar /> Mój Profil
+          <StyledLink to={Routing.MyAccount} onClick={() => handleRedirect(0)}>
+            <Avatar /> Mój Profil
+          </StyledLink>
         </MenuItem>
         <MenuItem>
-          <Avatar /> Moje Mecze
+          <StyledLink to={Routing.MyAccount} onClick={() => handleRedirect(1)}>
+            <Avatar /> Moje Mecze
+          </StyledLink>
         </MenuItem>
         <Divider />
         <MenuItem>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Ustawienia
+          <StyledLink to={Routing.MyAccount} onClick={() => handleRedirect(100)}>
+            <ListItemIcon>
+              <Settings fontSize="small" />
+            </ListItemIcon>
+            Ustawienia
+          </StyledLink>
         </MenuItem>
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>

@@ -13,6 +13,7 @@ const useReservedHours = () => {
 
   const isReserved = (hour: string, courtId: number) => (
     unavailableHours.some(item => item.parsedTime.includes(hour) && item.courtId === courtId)
+    || dayjs().isAfter(dayjs(`${clickedDate} ${hour}`, 'YYYY-MM-DD HH:mm'))
   )
 
   useEffect(() => {
@@ -52,7 +53,8 @@ const useReservedHours = () => {
   }, [clickedDate])
 
   return {
-    isReserved
+    isReserved,
+    unavailableHours
   }
 }
 

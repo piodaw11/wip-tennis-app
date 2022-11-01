@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { Schedule } from '@mui/icons-material'
+import { Schedule, Add } from '@mui/icons-material'
 
 import CourtIds from 'infrastructure/components/NewReservation/constants/CourtIds'
 import {
@@ -10,7 +10,6 @@ import {
   StyledTbody,
   StyledTh,
   StyledThIcon,
-  StyledTrBody,
   StyledTrHead,
   StyledButton,
   StyledReservationButton,
@@ -55,21 +54,21 @@ const ReservationHours: FunctionComponent = () => {
         </thead>
         <StyledTbody>
           {Hours.map((hour) => (
-            <StyledTrBody key={hour}>
+            <tr key={hour}>
               <StyledHours>{hour}</StyledHours>
               {CourtIds.map((court) => (
-                <StyledCourts key={court}>
+                <StyledCourts key={court} $reserved={isReserved(hour, court)}>
                   <StyledButton
                     onClick={() => clickedHourHandler(hour, court)}
                     $clicked={isClicked(hour, court)}
                     $reserved={isReserved(hour, court)}
                     disabled={isReserved(hour, court)}
                   >
-                    {court}
+                    {!isReserved(hour, court) && <Add />}
                   </StyledButton>
                 </StyledCourts>
               ))}
-            </StyledTrBody>
+            </tr>
           ))}
         </StyledTbody>
       </StyledTable>

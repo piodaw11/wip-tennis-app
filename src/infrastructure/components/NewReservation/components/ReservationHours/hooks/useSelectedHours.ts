@@ -6,6 +6,8 @@ import { setCourtNo, setSelectedHours } from 'infrastructure/components/NewReser
 import useAppDispatch from 'app/hooks/useAppDispatch'
 import useAppSelector from 'app/hooks/useAppSelector'
 import usePostReservation from 'infrastructure/components/NewReservation/hooks/usePostReservation'
+import useReservedHours
+  from 'infrastructure/components/NewReservation/components/ReservationHours/hooks/useReservedHours'
 
 const useSelectedHours = () => {
   const dispatch = useAppDispatch()
@@ -18,6 +20,10 @@ const useSelectedHours = () => {
   const {
     createReservationHandler
   } = usePostReservation()
+
+  const {
+    unavailableHours
+  } = useReservedHours()
 
   const SelectedHours = (hours: string, courtIds: number) => {
     dispatch(setCourtNo(courtIds))
@@ -36,6 +42,8 @@ const useSelectedHours = () => {
   }
 
   const reservationHandler = () => {
+    setClickedHours([])
+    setSortedHours([])
     createReservationHandler()
   }
 
@@ -73,6 +81,16 @@ const useSelectedHours = () => {
     setClickedHours([])
     setSortedHours([])
   }, [clickedDate])
+
+  useEffect(() => {
+    unavailableHours.map((hours) => {
+      if (sortedHours.some((hour) => hours.parsedTime.includes(hour) && hours.courtId === courtId)) {
+        setClickedHours([])
+        setSortedHours([])
+      }
+      return null
+    })
+  }, [sortedHours])
 
   return {
     SelectedHours,

@@ -3,8 +3,7 @@
 const PublicPages = [
   '/logowanie',
   '/rejestracja',
-  '/rezerwacja',
-  '/reservation',
+  '/liga',
   '/'
 ]
 

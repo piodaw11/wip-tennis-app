@@ -22,7 +22,6 @@ type State = {
       end: string
       id: number
       isPaid: boolean
-      middleHours: string[]
     }[]
   } | null
 }

@@ -52,11 +52,9 @@ const StyledTh = styled.th`
 `
 
 const StyledTbody = styled.tbody`
-  background-color: #efefef;
+  background-color: #f5f5f5;
   border: 1px solid #ddd;
 `
-
-const StyledTrBody = styled.tr``
 
 const StyledHours = styled.td`
   border: 1px solid #ddd;
@@ -64,10 +62,15 @@ const StyledHours = styled.td`
   color: #98978b;
 `
 
-const StyledCourts = styled.td`
+const StyledCourts = styled.td<{ $reserved: boolean }>`
   border: 1px solid #ddd;
   text-align: center;
   height: 36px;
+
+  ${({ $reserved }) => $reserved && css`
+    border-top: 1px;
+    border-bottom: 1px;
+  `}
 `
 
 const StyledButton = styled(Button)<{ $clicked: boolean, $reserved: boolean }>`
@@ -77,14 +80,16 @@ const StyledButton = styled(Button)<{ $clicked: boolean, $reserved: boolean }>`
   border-radius: 0 !important;
 
   ${({ $clicked }) => $clicked && css`
-    background-color: green !important;
+    background-color: #02d03d !important;
     color: white !important;
     border-color: green !important;
+    
+    & > svg {
+      fill: white !important;
+    }
   `}
-
   ${({ $reserved }) => $reserved && css`
-    background-color: grey!important;
-    color: lightgrey!important;
+    background-color: #efefef !important;
   `}
 `
 
@@ -104,7 +109,6 @@ export {
   StyledThIcon,
   StyledTh,
   StyledTbody,
-  StyledTrBody,
   StyledCourts,
   StyledHours,
   StyledButton,

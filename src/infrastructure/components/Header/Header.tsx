@@ -12,6 +12,7 @@ const Header:FunctionComponent = () => (
           autoPlay
           loop
           muted
+          controls={false}
         />
         <StyledBg />
       </StyledVideoWrapper>

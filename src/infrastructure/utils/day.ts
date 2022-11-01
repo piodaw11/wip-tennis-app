@@ -13,10 +13,4 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 dayjs.locale('pl')
 
-const week = dayjs().isoWeek()
-
-export {
-  week
-}
-
 export default dayjs

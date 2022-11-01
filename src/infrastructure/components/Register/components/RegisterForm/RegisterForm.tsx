@@ -1,4 +1,6 @@
 import { FunctionComponent, useEffect } from 'react'
+import { StepLabel, Step } from '@mui/material'
+import Cookies from 'js-cookie'
 
 import FirstStep
   from 'infrastructure/components/Register/components/FirstStep/FirstStep'
@@ -19,10 +21,6 @@ import {
   StepIcon
 } from 'infrastructure/components/Register/components/RegisterForm/StepIcons/StepIcons'
 import RegisterFormSteps from 'infrastructure/components/Register/components/RegisterForm/constants/RegisterFormSteps'
-import Step from '@mui/material/Step'
-import StepLabel from '@mui/material/StepLabel'
-import * as React from 'react'
-import Cookies from 'js-cookie'
 
 import useRouter from 'app/hooks/useRouter'
 import { useGetMeQuery } from 'infrastructure/components/Layout/store/user/userApi'

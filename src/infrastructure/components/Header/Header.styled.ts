@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const StyledHeader = styled.header`
-  height: 100vh;
+  max-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -12,7 +12,7 @@ const StyledHeader = styled.header`
 
 const StyledVideoWrapper = styled.div`
   display: flex;
-  height: 140vh;
+  max-height: 140vh;
 `
 
 const StyledVideo = styled.video`

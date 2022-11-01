@@ -8,7 +8,7 @@ const StyledNavbar = styled.nav`
   top: 0;
   left: 0;
   display: flex;
-  z-index: 2000;
+  z-index: 1000;
   background-color: #fff;
   box-shadow: 0 3px 5px -1px rgb(0 0 0 / 3%),
               0px 6px 10px 0px rgb(0 0 0 / 1%),

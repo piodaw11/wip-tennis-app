@@ -33,13 +33,13 @@ const useStepper = () => {
 
   useEffect(() => {
     switch (formStep) {
-      case 1:
+      case 0:
         setStepTitle(StepTitles.first)
         break
-      case 2:
+      case 1:
         setStepTitle(StepTitles.second)
         break
-      case 3:
+      case 2:
         setStepTitle(StepTitles.third)
         break
       default:

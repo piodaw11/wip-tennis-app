@@ -19,6 +19,7 @@ const StyledFormWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
+  overflow-y: auto;
 `
 
 const StyledFormItemsWrapper = styled.div`
